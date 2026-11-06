@@ -1,0 +1,17 @@
+name: NPM Publish
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  npm-publish:
+    permissions:
+      contents: read
+      id-token: write
+    uses: hemilabs/.github/.github/workflows/npm-publish.yml@d3bde3f5627e6a4e61c04cae8a6e04eef5874a01 # v1.4.0
+    with:
+      environment: release
+      package-manager: pnpm
+    secrets: inherit
