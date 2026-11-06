@@ -18,7 +18,7 @@ This package reads the [RedStone Sanctions Oracle](https://redstone.finance/blog
 
 The oracle is a singleton per chain, so the contract address is resolved from the client's chain rather than passed in. Ethereum mainnet is the only deployment today, and the addresses are exported as `sanctionsOracleAddresses`. Every method takes an optional `address` to point at a different oracle, which is useful on a chain this package doesn't know about yet or if governance swaps the contract.
 
-It shares its interface with the older Chainalysis oracle at `0x40C57923924B5c5c5455c48D93317139ADDaC8fb`, so that one works through the `address` override. Chainalysis [deprecated](https://go.chainalysis.com/chainalysis-oracle-docs.html) theirs and stopped updating it on March 18, 2026, so it misses anything designated since.
+The older Chainalysis oracle at `0x40C57923924B5c5c5455c48D93317139ADDaC8fb` is [deprecated](https://go.chainalysis.com/chainalysis-oracle-docs.html) and stopped being updated on March 18, 2026, so it misses anything designated since. Its `isSanctioned` still answers if you point `address` at it, but the rest of this package's interface doesn't exist there.
 
 Screening an address only tells you what the oracle reports. It is not a substitute for a compliance program, and it does not stop anyone from interacting with a contract directly.
 
